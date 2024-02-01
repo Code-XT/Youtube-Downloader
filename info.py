@@ -7,14 +7,15 @@ def video_Info(yt):
     print("Total Views : ",yt.views)
     print("Is Age Restricted : ",yt.age_restricted)
     print("Thumbnail Url : ",yt.thumbnail_url)
-    print('Stream Details :', yt.fmt_streams)
+    print('Streams:',yt.streams.filter(progressive=True, file_extension='mp4'))
 
 def vidDownload(yt):
     print('Fetching Streams...')
-    
     yt = yt.streams.get_highest_resolution()
+    print(yt)
+    print("\n\nDownloading...")
     try:
-        print("Downloading...")
+       
         yt.download()
     except:
         print("An error has occurred")
